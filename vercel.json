@@ -8,7 +8,9 @@
     ],
     "functions": {
       "package": {
-        "installCommand": "npm install --force"
+        "scripts": {
+          "vercel-build": "npm run vercel-build"
+        }
       }
     }
   }
