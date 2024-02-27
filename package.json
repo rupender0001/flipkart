@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+  "build": "npm install --legacy-peer-deps"
+},
   "author": "",
   "license": "ISC",
   "dependencies": {
