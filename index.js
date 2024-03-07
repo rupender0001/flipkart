@@ -26,7 +26,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin:'https://flp-frontend.vercel.app',
+    origin:'*',
     methods:["POST","GET"],
     credentials:true
 }));
