@@ -20,7 +20,7 @@ console.log(`>>>>>>>>>`)
 Connection(1234, 1234);
 console.log(`>>>>>>>>>>>>>sss>>>>`)
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
-DefaultData();
+// DefaultData();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
