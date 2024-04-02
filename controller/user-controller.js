@@ -15,6 +15,15 @@ export const userLogIn = async (request, response) => {
         response.json('Error: ', error.message);        
     }
 }
+export const getUser = async (request, response) => {
+    try {
+        const products = await User.find({});
+
+        response.json(products);
+    }catch (error) {
+
+    }
+}
 
 export const userSignUp = async (request, response) => {
     try {

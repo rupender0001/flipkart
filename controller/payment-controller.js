@@ -1,29 +1,17 @@
 import crypto from 'crypto'
-
+import Payment from '../model/paymentModel.js';
 
 
 import Razorpay from 'razorpay';
 
 export const addMoney = async (req, res) => {
   try {
-    const instance = new Razorpay({
-      key_id: process.env.KEY_ID,
-      key_secret: process.env.KEY_SECRET
-    });
+    console.log(req.body)
+    const user = req.body;
+    const newUser = new Payment(user);
+    await newUser.save();
+    res.status(200).json({ message: user });
 
-    const options = {
-      amount: req.body.amount,
-      currency: "INR",
-      receipt: crypto.randomBytes(10).toString("hex")
-    };
-
-    instance.orders.create(options, (error, order) => {
-      if (error) {
-        console.log(error);
-        return res.status(500).send({ message: "Something went wrong" });
-      }
-      res.status(200).json({ data: order });
-    });
   } catch (error) {
     console.error(error);
     return res.status(500).send({ message: "Internal Server Error" });

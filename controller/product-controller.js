@@ -22,6 +22,34 @@ export const getProductById = async (request, response) => {
 
     }
 }
+export const addProduct=async(req,res)=>{
+    try{
+        console.log(req.body)
+        const product = new Product({
+            url: req.body.url,
+            detailUrl: req.body.detailUrl,
+            title:{
+                shortTitle:req.body.shortTitle,
+                longTitle:req.body.longTitle
+            },
+            price:{
+                mrp:req.body.mrp,
+                cost:req.body.cost,
+                discount:req.body.discount+'%'
+            },
+            quantity:req.body.quantity,
+            description:req.body.description,
+            discount:req.body.discounts,
+            tagline:req.body.tagline
+        });
+        console.log(2)
+        const result=await product.save();
+        return res.status(200).send({success:true,data:result})
+    }
+    catch(error){
+        response.json(error).status(500)
+    }
+}
 export const getProductsData = async (request, response) => {
     try {
         const products = await productData.find({});
