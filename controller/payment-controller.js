@@ -17,6 +17,16 @@ export const addMoney = async (req, res) => {
     return res.status(500).send({ message: "Internal Server Error" });
   }
 };
+export const getMoney = async (req, res) => {
+  try {
+    const newUser = await Payment.find()
+    res.status(200).json({ result: newUser });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send({ message: "Internal Server Error" });
+  }
+};
 
 export const verifyPay=async(req,res)=>{
     try {
