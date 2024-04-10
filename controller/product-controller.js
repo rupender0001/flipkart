@@ -50,6 +50,19 @@ export const addProduct=async(req,res)=>{
         response.json(error).status(500)
     }
 }
+export const deleteProduct=async(req,res)=>{
+    try {
+        console.log(`>>>>>>>>.delete>>>`)
+        const productId = req.params.id;
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+        if (!deletedProduct) {
+          return res.status(404).json({ message: 'Product not found' });
+        }
+        res.json({ message: 'Product deleted successfully', deletedProduct });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+}
 export const getProductsData = async (request, response) => {
     try {
         const products = await productData.find({});
