@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
     origin:'*',
-    methods:["POST","GET"],
+    methods:["POST","GET","DELETE"],
     credentials:true
 }));
 app.use('/', Routes);
